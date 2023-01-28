@@ -3,7 +3,7 @@ version: '3.5'
 services:
 
   jenkins:
-    image: docker.io/maneesh2023/myrepo
+    image: docker.io/hoto/jenkinsfile-examples
     build: .
     ports:
     - target: 8080
