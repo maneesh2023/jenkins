@@ -1,6 +1,10 @@
 pipeline {
     agent any
     environment {
+        AZURE_CLIENT_ID = "bbea970d-df9d-4967-ab08-268a8bd37c92"
+        AZURE_CLIENT_SECRET = "nre8Q~zb7eYYme2aeZ3YJDKViADOJK6zsyuWUbul"
+        AZURE_TENANT_ID = "25ac4c27-5513-4bea-828e-cce60779b2a8"
+        AZURE_SUBSCRIPTION_ID = "a8dd044b-a140-40b4-855d-66dbcdc99f31"
         AKS_CLUSTER_NAME = "my-aks-cluster"
         AKS_RESOURCE_GROUP = "my-aks-rg"
         AKS_NAMESPACE = "my-aks-ns"
