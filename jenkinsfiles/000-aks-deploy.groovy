@@ -1,4 +1,5 @@
-pipeline {
+
+    pipeline {
     agent any
     environment {
         AZURE_CLIENT_ID = "bbea970d-df9d-4967-ab08-268a8bd37c92"
@@ -15,9 +16,19 @@ pipeline {
                 git url: 'https://github.com/Azure-Samples/azure-voting-app-redis.git'
             }
         }
+         stage('AKS Resource Check') {
+            steps {
+                    sh '''
+                       # curl -L https://aka.ms/InstallAzureCLIDeb | bash
+                       # az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
+                       # az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 3 --generate-ssh-keys
+                    '''
+            }
+        }
         stage('Deploy to AKS') {
             steps {
                     sh '''
+                        curl -L https://aka.ms/InstallAzureCLIDeb | bash
                         az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
                         az aks get-credentials --resource-group $AKS_RESOURCE_GROUP --name $AKS_CLUSTER_NAME --overwrite-existing --admin
                         kubectl create namespace $AKS_NAMESPACE
@@ -27,3 +38,5 @@ pipeline {
         }
     }
 }
+
+    
