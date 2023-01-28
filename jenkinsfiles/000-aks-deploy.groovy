@@ -1,9 +1,7 @@
-
-    
-    
     pipeline {
     agent any
     environment {
+        DOCKERHUB_TOKEN = "dckr_pat_LwodQS_ErC_4XPx-0w0-bkBDONw"
         AZURE_CLIENT_ID = "5077da19-23ba-4ff7-b6db-689c3ea6b6c5"
         AZURE_CLIENT_SECRET = "qHV8Q~hgPnd7gIXfS2iiEdN.lwBvENNu_wpvsdbk"
         AZURE_TENANT_ID = "257372eb-856d-4472-9ba7-d63a8ae6f63b"
@@ -21,6 +19,7 @@
         stage('Build') {
             steps {
                     sh '''
+                        docker login -u maneesh2023 -p $DOCKERHUB_TOKEN
                         docker-compose build
                         docker-compose push
                     '''
