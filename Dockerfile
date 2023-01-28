@@ -4,7 +4,7 @@ USER root
 
 RUN apt-get update -y && \
     apt-get install -y awscli jq gettext-base tree vim zip
-RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
+RUN curl -L https://aka.ms/InstallAzureCLIDeb | bash
 
 RUN wget https://download.docker.com/linux/static/stable/x86_64/docker-18.06.1-ce.tgz && \
 	tar xzvf docker-18.06.1-ce.tgz && \
