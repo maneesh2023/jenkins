@@ -2,10 +2,10 @@
     pipeline {
     agent any
     environment {
-        AZURE_CLIENT_ID = "bbea970d-df9d-4967-ab08-268a8bd37c92"
-        AZURE_CLIENT_SECRET = "nre8Q~zb7eYYme2aeZ3YJDKViADOJK6zsyuWUbul"
-        AZURE_TENANT_ID = "25ac4c27-5513-4bea-828e-cce60779b2a8"
-        AZURE_SUBSCRIPTION_ID = "a8dd044b-a140-40b4-855d-66dbcdc99f31"
+        AZURE_CLIENT_ID = "5077da19-23ba-4ff7-b6db-689c3ea6b6c5"
+        AZURE_CLIENT_SECRET = "qHV8Q~hgPnd7gIXfS2iiEdN.lwBvENNu_wpvsdbk"
+        AZURE_TENANT_ID = "257372eb-856d-4472-9ba7-d63a8ae6f63b"
+        AZURE_SUBSCRIPTION_ID = "a78e6e3e-c9fe-4863-be70-f602072c40e2"
         AKS_CLUSTER_NAME = "my-aks-cluster"
         AKS_RESOURCE_GROUP = "my-aks-rg"
         AKS_NAMESPACE = "my-aks-ns"
@@ -21,7 +21,7 @@
                     sh '''
                        # curl -L https://aka.ms/InstallAzureCLIDeb | bash
                        # az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
-                       # az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 3 --generate-ssh-keys
+                       # az aks create --resource-group my-aks-rg --name my-aks-cluster --generate-ssh-keys
                     '''
             }
         }
