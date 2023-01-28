@@ -18,7 +18,7 @@ services:
     tty: true
 
   jenkinsfile-loader:
-    image: docker.io/maneesh2023/myrepo:latest
+    image: docker.io/hoto/jenkinsfile-loader:1.1.0
     environment:
       JENKINS_URL: 'http://jenkins:8080'
       CONFIGS_XML_DIR: '/usr/local/src/configs'
