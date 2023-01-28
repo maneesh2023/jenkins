@@ -35,7 +35,7 @@
                         curl -L https://aka.ms/InstallAzureCLIDeb | bash
                         az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
                         az aks get-credentials --resource-group $AKS_RESOURCE_GROUP --name $AKS_CLUSTER_NAME --overwrite-existing --admin
-                        #kubectl create namespace $AKS_NAMESPACE
+                        kubectl get namespace $AKS_NAMESPACE || kubectl create namespace $AKS_NAMESPACE
                         kubectl apply -f azure-vote-all-in-one-redis.yaml -n $AKS_NAMESPACE
                         kubectl get service azure-vote-front -n my-aks-ns -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
                     '''
