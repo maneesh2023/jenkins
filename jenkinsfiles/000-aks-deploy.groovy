@@ -1,5 +1,6 @@
 
     
+    
     pipeline {
     agent any
     environment {
@@ -14,13 +15,14 @@
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/maneesh2023/azure-voting-app-redis.git'
+                git branch: 'main', url: 'https://github.com/maneesh2023/azure-voting-app-redis.git'
             }
         }
         stage('Build') {
             steps {
                     sh '''
-                        echo "Building App here"
+                        docker-compose build
+                        docker-compose push
                     '''
             }
         }
@@ -50,6 +52,8 @@
         }
     }
 }
+
+    
 
     
 
