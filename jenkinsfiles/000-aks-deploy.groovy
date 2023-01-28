@@ -17,6 +17,13 @@
                 git url: 'https://github.com/maneesh2023/azure-voting-app-redis.git'
             }
         }
+        stage('Build') {
+            steps {
+                    sh '''
+                        echo "Building App here"
+                    '''
+            }
+        }
          stage('AKS Resource Check') {
             steps {
                     sh '''
