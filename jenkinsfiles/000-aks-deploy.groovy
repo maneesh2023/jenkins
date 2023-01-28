@@ -14,7 +14,7 @@
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/Azure-Samples/azure-voting-app-redis.git'
+                git url: 'https://github.com/maneesh2023/azure-voting-app-redis.git'
             }
         }
          stage('AKS Resource Check') {
