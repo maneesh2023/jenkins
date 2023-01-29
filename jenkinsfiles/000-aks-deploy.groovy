@@ -45,7 +45,21 @@
                         az aks get-credentials --resource-group $AKS_RESOURCE_GROUP --name $AKS_CLUSTER_NAME --overwrite-existing --admin
                         kubectl get namespace $AKS_NAMESPACE || kubectl create namespace $AKS_NAMESPACE
                         kubectl replace --force -f azure-vote-all-in-one-redis.yaml -n $AKS_NAMESPACE || kubectl apply --force -f azure-vote-all-in-one-redis.yaml -n $AKS_NAMESPACE
-                        kubectl get service azure-vote-front -n my-aks-ns -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
+                        while true; do
+                        IP=$(kubectl get service azure-vote-front -n my-aks-ns -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+                        if [ "$IP" != "" ]; then
+                        break
+                        fi
+                        sleep 5
+                        done
+                        # Output the service IP
+                        echo *************************
+                        echo *************************
+                        echo "Service IP: $IP"
+                        echo *************************
+                        echo *************************
+                        
+                        
                     '''
             }
         }
